@@ -1,0 +1,21 @@
+{% extends "home.html" %}
+{% block con %}
+
+  <form method="post">
+    {% csrf_token %}
+    <h1>register</h1>
+    first name:
+    <input type="text" name="fname" required><br><br>
+    lastname:
+    <input type="text" name="lname" required><br><br>
+    Username:
+    <input type="text" name="uname" required><br><br>
+    Email:
+    <input type="email" name="email" required><br><br>
+    Password:
+    <input type="password" name="psw1" required><br><br>
+    Confirm password:
+    <input type="password" name="psw2" required><br><br>
+    <button type="submit">Sign up</button>
+  </form>
+  {% endblock con %}
