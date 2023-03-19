@@ -5,3 +5,22 @@ header {
     background-color: #d41111;
 
 }
+.row{
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+.col{
+    padding-bottom: 20px;
+    width: 30%;
+}
+
+
+.qq{
+    width: 50%;
+}
+
+#carouselExample{
+    padding-top: 20px;
+}

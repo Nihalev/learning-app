@@ -1,3 +1,4 @@
+
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.models import User
@@ -5,6 +6,16 @@ from django.contrib.auth.models import User
 # Create your views here.
 def home(req):
     return render(req,'home.html')
+
+
+
+def class1(req):
+      pdf_url = "static\1678883530925-01.jpeg"
+      return render(req, "class1.html", {"pdf_url": pdf_url})
+
+
+
+
 
 
 def signup(req):
@@ -45,3 +56,6 @@ def signin(req):
 def signout(req):
     logout(req)
     return redirect(home)
+
+
+
