@@ -10,8 +10,11 @@ def home(req):
 
 
 def class1(req):
-      pdf_url = "static\1678883530925-01.jpeg"
-      return render(req, "class1.html", {"pdf_url": pdf_url})
+      return render(req, "class1.html")
+
+
+def raindrops(req):
+      return render(req, "raindrops.html")
 
 
 
