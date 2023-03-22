@@ -17,7 +17,16 @@ def raindrops(req):
       return render(req, "raindrops.html")
 
 
+def Marigold(req):
+      return render(req, "Marigold.html")
 
+
+def Magic(req):
+      return render(req, "Magic.html")
+
+
+def एनसीईआरटीकक्षा१रिमझिम(req):
+      return render(req, "एन सी ई आर टी कक्षा १ रिमझिम.html")
 
 
 
@@ -61,4 +70,5 @@ def signout(req):
     return redirect(home)
 
 
-
+def userdetails(req):
+     return render(req,'userdetails.html')
