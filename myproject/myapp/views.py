@@ -2,6 +2,7 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.models import User
+from myapp.models import PersonalDetails
 
 # Create your views here.
 def home(req):
@@ -39,7 +40,8 @@ def signup(req):
          psw2=req.POST['psw2']
          email=req.POST['email']
          if password==psw2:
-             User.objects.create_user(username=username,email=email,password=password,first_name=fname,last_name=lname)
+             u = User.objects.create_user(username=username,email=email,password=password,first_name=fname,last_name=lname)
+             PersonalDetails.objects.create(user_id=u)
              return redirect(signin)
     else:
         return render(req,'signup.html')
@@ -71,4 +73,5 @@ def signout(req):
 
 
 def userdetails(req):
-     return render(req,'userdetails.html')
+     P=PersonalDetails.objects.get(user_id=req.user)
+     return render(req,'userdetails.html',{'ps':P})
