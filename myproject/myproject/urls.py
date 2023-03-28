@@ -15,9 +15,11 @@ Including another URLconf
 """
 
 
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path
 from myapp import views
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -32,4 +34,4 @@ urlpatterns = [
     path('Magic',views.Magic),
     path('एन सी ई आर टी कक्षा १ रिमझिम',views.एनसीईआरटीकक्षा१रिमझिम),
     path('userdetails',views.userdetails),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

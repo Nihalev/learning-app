@@ -1,15 +1,125 @@
 {% extends "home.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 {% block con %}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<div class="container" style="padding-top: 80px">
+<div class="row">
+  <div class="col-md">
+    <div class="card text-center" style="width: 500px;">
+      <div class="card-header">user</div>
+      <div class="card-body mx-auto">
 
-{{ user.username }}
-{{user.first_name}}
-{{user.last_name}}
-{{user.email}}
-{{ps.city}}
-{{ps.phone_number}}
-{{ps.gender}}
-{{ps.date_of_birth}}
+            <div id="mm">
+              <img  id="img" src="{{ ps.image.url }}">
+             <label id="label" for="file">
+               <span id="lablename">Change Image</span>
+             </label>
+
+             <input  id="file" type="file"  name="file">
+            </div>
+
+       <h5 class="card-title">{{ user.username }}</h5>
+      </div>
+      <div class="card-footer">
+        <input type="submit" class="btn btn-primary" value="upload">
+      </div>
+    </div>
+  </div>
+  <div class="col-md">
+    <div class="card">
+    <div class="card-body">
+
+        <div class="row">
+          <div class="col">
+            <div>
+              <label class="form-label">username*</label>
+              <input type="text" value="{{ user.username }}" class="form-control" name="uname" required>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label class="form-label">email</label>
+              <input type="text" value="{{user.email}}" placeholder="example@gmail.com" class="form-control" name="email">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+        <div class="mb-3">
+          <label class="form-label">first name</label>
+          <input type="text" value="{{user.first_name}}" placeholder="firstname" class="form-control" name="fname">
+        </div>
+          </div>
+          <div class="col">
+        <div class="mb-3">
+          <label class="form-label">last name</label>
+          <input type="text" value="{{user.last_name}}" placeholder="lastname" class="form-control" name="lname">
+        </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="mb-3">
+              <label class="form-label">phone number</label>
+              <input type="text" value="{{ps.phone_number}}" placeholder="phonenumber" class="form-control" name="phone">
+            </div>
+          </div>
+          <div class="col">
+            <div class="mb-3">
+              <label class="form-label">city</label>
+              <input type="text" value="{{ps.city}}" placeholder="city" class="form-control" name="city">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="mb-3">
+              <label class="form-label">gender</label>
+              <select class="form-select" name="gender">
+                {% if "male" == ps.gender %}
+                   <option value="male">male </option>
+                   <option value="female">female</option>
+                   <option value="other">other</option>
+                {% elif ps.gender == "female" %}
+                   <option value="female">female</option>
+                   <option value="male">male </option>
+                   <option value="other">other</option>
+                {% else %}
+                   <option value="other">other</option>
+                   <option value="female">female</option>
+                   <option value="male">male </option>
+               {% endif %}
+              </select>
+            </div>
+          </div>
+          <div class="col">
+            <div class="mb-3">
+              <label class="form-label">date of birth</label>
+              <input type="date" value="{{ps.date_of_birth}}" class="form-control" name="dob">
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </div>
+  </div>
+</div>
+</div>
+</div></form>
 
 
 
   {% endblock con %}
+
+</body>
+</html>
