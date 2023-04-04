@@ -1,16 +1,16 @@
 {% extends "home.html" %}
 {% block con %}
-<div class="container-fluid" style="padding-top: 80px;">
-<div class="card mx-auto" style="width: 25rem; height: 31rem;">
+<div class="container-fluid" style="padding-top: 80px; padding-bottom: 120px; background-image: url('/static/rrrrrr.jpg'); background-position: center;background-size: cover;">
+<div class="card mx-auto" style="width: 25rem; height: 31rem; background-color:rgba(18, 0, 89, 0); backdrop-filter: blur(10px);">
 <div class="card-body">
-     <h1 style="text-align: center; margin-bottom: 40px;">register</h1>
+     <h1 style="text-align: center; margin-bottom: 40px; opacity: 0.5; color: rgb(255, 255, 255);">register</h1>
   <form method="post">
     {% csrf_token %}
-    <label class="form-label">username</label>
+    <label class="form-label" style="opacity: 0.5; color: rgb(255, 255, 255);">username</label>
     <input class="form-control" style="margin-bottom: 40px;" type="text" name="uname" required>
-    <label class="form-label">password</label>
+    <label class="form-label" style="opacity: 0.5; color: rgb(255, 255, 255);">password</label>
     <input class="form-control" style="margin-bottom: 40px;" type="password" name="psw1" required>
-    <label class="form-label">Confirm password</label>
+    <label class="form-label" style="opacity: 0.5; color: rgb(255, 255, 255);">Confirm password</label>
     <input class="form-control" style="margin-bottom: 40px;" type="password" name="psw2" required>
      <div style="text-align: center;">
       <button  class="btn btn-danger" type="submit">Sign up</button>

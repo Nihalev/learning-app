@@ -79,55 +79,13 @@ def userdetails(req):
          return render(req,'userdetails.html',{'ps':P})
     
 
-def class1(req):
+def classes(req,value):
+       t=Textbooks.objects.filter(classe=value)
        try:
           P=PersonalDetails.objects.get(user_id=req.user)
-          return render(req,'class1.html',{'ps':P})
+          return render(req,'classes.html',{'ps':P,'t':t})
        except:
-          return render(req, "class1.html")
-       
-
-def class2(req):
-       
-       t=Textbooks.objects.filter(classe=2)
-       try:
-          P=PersonalDetails.objects.get(user_id=req.user)
-          return render(req,'class2.html',{'ps':P,'t':t})
-       except:
-          return render(req, "class2.html")
-
-
-def raindrops(req):
-      try:
-        P=PersonalDetails.objects.get(user_id=req.user)
-        return render(req,'raindrops.html',{'ps':P})
-      except:
-        return render(req, "raindrops.html")
-
-
-def Marigold(req):
-      try:
-        P=PersonalDetails.objects.get(user_id=req.user)
-        return render(req,'Marigold.html',{'ps':P})
-      except:
-        return render(req, "Marigold.html")
-
-
-def Magic(req):
-      try:
-        P=PersonalDetails.objects.get(user_id=req.user)
-        return render(req,'Magic.html',{'ps':P})
-      except:
-        return render(req, "Magic.html")
-
-
-def एनसीईआरटीकक्षा१रिमझिम(req):
-      try:
-        P=PersonalDetails.objects.get(user_id=req.user)
-        return render(req,'एन सी ई आर टी कक्षा १ रिमझिम.html',{'ps':P})
-      except:
-        return render(req, "एन सी ई आर टी कक्षा १ रिमझिम.html")
-
+          return render(req, "classes.html",{'t':t})
 
 
 @login_required(login_url='/login')
@@ -140,10 +98,10 @@ def addbook(req):
     
 
 
-def classes(req):
+def all_classes(req):
        t=Textbooks.objects.all()
        try:
           P=PersonalDetails.objects.get(user_id=req.user)
-          return render(req,'class.html',{'ps':P,'t':t})
+          return render(req,'all_classes.html',{'ps':P,'t':t})
        except:
-          return render(req, "class.html")
+          return render(req, "all_classes.html",{'t':t})
