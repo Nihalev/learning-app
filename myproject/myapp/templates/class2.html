@@ -1,0 +1,29 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block con %}
+<div class="container-fluid">
+<div class="row">
+
+{% for i in t %}
+
+<div class="col-xl-6">
+  <div class="card" style="width: 100%;">
+      <div class="card-body">
+        <object data="{{ i.book.url }}#toolbar=0" type="application/pdf" width="100%" height="940px"></object>
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-7">{{ i.bookname }}</div>
+          <div class="col-5 text-end"><span style="font-size: 80%">added by: </span>{{ i.addedby }}</div>
+        </div>
+
+      </div>
+    </div>
+</div>
+
+{% endfor %}
+
+</div>
+</div>
+{% endblock con %}

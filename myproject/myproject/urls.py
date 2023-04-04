@@ -29,9 +29,12 @@ urlpatterns = [
     path('login', views.signin),
     path('logout', views.signout),
     path('class1', views.class1),
+    path('class2', views.class2),
     path('raindrops',views.raindrops),
     path('Marigold',views.Marigold),
     path('Magic',views.Magic),
     path('एन सी ई आर टी कक्षा १ रिमझिम',views.एनसीईआरटीकक्षा१रिमझिम),
     path('userdetails',views.userdetails),
+    path('addbook',views.addbook),
+    path('class',views.classes),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

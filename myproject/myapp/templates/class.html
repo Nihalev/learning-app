@@ -1,0 +1,260 @@
+{% extends "home.html" %}
+{% load static %}
+
+    {% block con %}
+
+
+    <div class="container text-center">
+        <div class="row">
+
+          <div class="col">
+            <div class="card" style="width: 18rem;"> 
+                <div class="card-header"><h1>class 1</h1></div>
+                <div class="card-body">
+                    <h5 class="card-title">Textbooks</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  {% for i in t %}
+                  {% if i.classe == 1 %}
+                    <li class="list-group-item">{{i.bookname}}</li>
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
+                  <div class="card-footer">
+                    <a href="class1" class="btn btn-primary">go to class</a>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="col">
+            <div class="card" style="width: 18rem;"> 
+                <div class="card-header"><h1>class 2</h1></div>
+                <div class="card-body">
+                    <h5 class="card-title">Textbooks</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  {% for i in t %}
+                  {% if i.classe == 2 %}
+                    <li class="list-group-item">{{i.bookname}}</li>
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
+                  <div class="card-footer">
+                    <a href="class2" class="btn btn-primary">go to class</a>
+                  </div>
+              </div>
+          </div>
+
+
+
+          <div class="col">
+            <div class="card" style="width: 18rem;"> 
+                <div class="card-header"><h1>class 3</h1></div>
+                <div class="card-body">
+                    <h5 class="card-title">Textbooks</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  {% for i in t %}
+                  {% if i.classe == 3 %}
+                    <li class="list-group-item">{{i.bookname}}</li>
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
+                  <div class="card-footer">
+                    <a href="class3" class="btn btn-primary">go to class</a>
+                  </div>
+              </div>
+          </div>
+
+
+
+          <div class="col">
+            <div class="card" style="width: 18rem;"> 
+                <div class="card-header"><h1>class 4</h1></div>
+                <div class="card-body">
+                    <h5 class="card-title">Textbooks</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  {% for i in t %}
+                  {% if i.classe == 4 %}
+                    <li class="list-group-item">{{i.bookname}}</li>
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
+                  <div class="card-footer">
+                    <a href="class4" class="btn btn-primary">go to class</a>
+                  </div>
+              </div>
+          </div>
+
+
+
+          <div class="col">
+            <div class="card" style="width: 18rem;"> 
+                <div class="card-header"><h1>class 5</h1></div>
+                <div class="card-body">
+                    <h5 class="card-title">Textbooks</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  {% for i in t %}
+                  {% if i.classe == 5 %}
+                    <li class="list-group-item">{{i.bookname}}</li>
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
+                  <div class="card-footer">
+                    <a href="class5" class="btn btn-primary">go to class</a>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="col">
+            <div class="card" style="width: 18rem;"> 
+                <div class="card-header"><h1>class 6</h1></div>
+                <div class="card-body">
+                    <h5 class="card-title">Textbooks</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  {% for i in t %}
+                  {% if i.classe == 6 %}
+                    <li class="list-group-item">{{i.bookname}}</li>
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
+                  <div class="card-footer">
+                    <a href="class6" class="btn btn-primary">go to class</a>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="col">
+            <div class="card" style="width: 18rem;"> 
+                <div class="card-header"><h1>class 7</h1></div>
+                <div class="card-body">
+                    <h5 class="card-title">Textbooks</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  {% for i in t %}
+                  {% if i.classe == 7 %}
+                    <li class="list-group-item">{{i.bookname}}</li>
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
+                  <div class="card-footer">
+                    <a href="class7" class="btn btn-primary">go to class</a>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="col">
+            <div class="card" style="width: 18rem;"> 
+                <div class="card-header"><h1>class 8</h1></div>
+                <div class="card-body">
+                    <h5 class="card-title">Textbooks</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  {% for i in t %}
+                  {% if i.classe == 8 %}
+                    <li class="list-group-item">{{i.bookname}}</li>
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
+                  <div class="card-footer">
+                    <a href="class8" class="btn btn-primary">go to class</a>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="col">
+            <div class="card" style="width: 18rem;"> 
+                <div class="card-header"><h1>class 9</h1></div>
+                <div class="card-body">
+                    <h5 class="card-title">Textbooks</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  {% for i in t %}
+                  {% if i.classe == 9 %}
+                    <li class="list-group-item">{{i.bookname}}</li>
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
+                  <div class="card-footer">
+                    <a href="class9" class="btn btn-primary">go to class</a>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="col">
+            <div class="card" style="width: 18rem;"> 
+                <div class="card-header"><h1>class 10</h1></div>
+                <div class="card-body">
+                    <h5 class="card-title">Textbooks</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  {% for i in t %}
+                  {% if i.classe == 10 %}
+                    <li class="list-group-item">{{i.bookname}}</li>
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
+                  <div class="card-footer">
+                    <a href="class10" class="btn btn-primary">go to class</a>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="col">
+            <div class="card" style="width: 18rem;"> 
+                <div class="card-header"><h1>class 11</h1></div>
+                <div class="card-body">
+                    <h5 class="card-title">Textbooks</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  {% for i in t %}
+                  {% if i.classe == 11 %}
+                    <li class="list-group-item">{{i.bookname}}</li>
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
+                  <div class="card-footer">
+                    <a href="class11" class="btn btn-primary">go to class</a>
+                  </div>
+              </div>
+          </div>
+
+
+          <div class="col">
+            <div class="card" style="width: 18rem;"> 
+                <div class="card-header"><h1>class 12</h1></div>
+                <div class="card-body">
+                    <h5 class="card-title">Textbooks</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                  {% for i in t %}
+                  {% if i.classe == 12 %}
+                    <li class="list-group-item">{{i.bookname}}</li>
+                  {% endif %}
+                  {% endfor %}
+                  </ul>
+                  <div class="card-footer">
+                    <a href="class12" class="btn btn-primary">go to class</a>
+                  </div>
+              </div>
+          </div>
+
+      
+      </div>
+    </div>
+
+
+
+
+
+ {% endblock con %}

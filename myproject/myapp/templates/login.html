@@ -1,22 +1,26 @@
 {% extends "home.html" %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% load static %}
+
     
     {% block con %}
-    <h1>login</h1>
-    <form action="" method="post">
+    <div style="background: url('/static/adobeStock_280081854_Preview.jpeg'); background-position: center; background-size: cover;">
+    <div class="container-fluid" style="padding-top: 80px; padding-bottom: 218px; width: 70rem">
+    <div class="card" style="width: 25rem; height: 25rem">
+    <div class="card-body">
+        <h1 style="text-align: center; margin-bottom: 40px;">login</h1>
+    <form method="post">
         {% csrf_token %}
-        username:<input type="text" name="uname"><br>
-        password:<input type="password" name="psw">
-        <input type="submit">
+        <label class="form-label">username</label>
+        <input class="form-control" style="margin-bottom: 40px;" type="text" name="uname" required>
+        <label class="form-label">password</label>
+        <input class="form-control" type="password" name="psw" required>
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        <div style="text-align: center;">
+        <input class="btn btn-danger" style="margin-top: 40px;" type="submit">
+        </div>
     </form>
+    </div>
+    </div>
+    </div>
+</div>
     {% endblock con %}
-</body>
-</html>

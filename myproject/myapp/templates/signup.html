@@ -1,15 +1,22 @@
 {% extends "home.html" %}
 {% block con %}
-
+<div class="container-fluid" style="padding-top: 80px;">
+<div class="card mx-auto" style="width: 25rem; height: 31rem;">
+<div class="card-body">
+     <h1 style="text-align: center; margin-bottom: 40px;">register</h1>
   <form method="post">
     {% csrf_token %}
-    <h1>register</h1>
-    Username:
-    <input type="text" name="uname" required><br><br>
-    Password:
-    <input type="password" name="psw1" required><br><br>
-    Confirm password:
-    <input type="password" name="psw2" required><br><br>
-    <button type="submit">Sign up</button>
+    <label class="form-label">username</label>
+    <input class="form-control" style="margin-bottom: 40px;" type="text" name="uname" required>
+    <label class="form-label">password</label>
+    <input class="form-control" style="margin-bottom: 40px;" type="password" name="psw1" required>
+    <label class="form-label">Confirm password</label>
+    <input class="form-control" style="margin-bottom: 40px;" type="password" name="psw2" required>
+     <div style="text-align: center;">
+      <button  class="btn btn-danger" type="submit">Sign up</button>
+     </div>
   </form>
+    </div>
+    </div>
+    </div>
   {% endblock con %}

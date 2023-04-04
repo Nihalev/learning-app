@@ -1,8 +1,13 @@
 
+import os
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.models import User
-from myapp.models import PersonalDetails
+from myapp.models import PersonalDetails,Textbooks
+from myapp.forms import TextbookForm
+from django.contrib.auth.decorators import login_required
+from django.http import FileResponse
+from django.conf import settings
 
 # Create your views here.
 def home(req):
@@ -30,9 +35,12 @@ def signin(req):
          uname=req.POST['uname']
          psw=req.POST['psw']
          user=authenticate(username=uname,password=psw)
-         if user is not None:
+         if user:
            login(req,user)
-           return redirect(home)
+           if req.POST['next']:
+               return redirect(req.POST['next'])
+           else:
+               return redirect(home)
          else:
              return HttpResponse("ooooooooooo")
                  
@@ -60,8 +68,8 @@ def userdetails(req):
       u.gender=req.POST['gender']
       u.save()
       try:
-          img=req.FILES['file']
-          u.image.save('profile.png',img)
+          u.image=req.FILES['file']
+          u.save()
       except:
           pass 
     
@@ -77,6 +85,16 @@ def class1(req):
           return render(req,'class1.html',{'ps':P})
        except:
           return render(req, "class1.html")
+       
+
+def class2(req):
+       
+       t=Textbooks.objects.filter(classe=2)
+       try:
+          P=PersonalDetails.objects.get(user_id=req.user)
+          return render(req,'class2.html',{'ps':P,'t':t})
+       except:
+          return render(req, "class2.html")
 
 
 def raindrops(req):
@@ -109,3 +127,23 @@ def एनसीईआरटीकक्षा१रिमझिम(req):
         return render(req,'एन सी ई आर टी कक्षा १ रिमझिम.html',{'ps':P})
       except:
         return render(req, "एन सी ई आर टी कक्षा १ रिमझिम.html")
+
+
+
+@login_required(login_url='/login')
+def addbook(req):
+    if req.method=='POST':
+        Textbooks(classe=req.POST['class'],addedby=req.user,bookname=req.POST['textname'],book=req.FILES['file']).save()
+    else:
+        P=PersonalDetails.objects.get(user_id=req.user)
+        return render(req,'addbooks.html',{'ps':P})
+    
+
+
+def classes(req):
+       t=Textbooks.objects.all()
+       try:
+          P=PersonalDetails.objects.get(user_id=req.user)
+          return render(req,'class.html',{'ps':P,'t':t})
+       except:
+          return render(req, "class.html")

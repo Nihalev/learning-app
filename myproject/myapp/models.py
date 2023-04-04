@@ -11,3 +11,12 @@ class PersonalDetails(models.Model):
     gender= models.CharField(max_length=10)
     city= models.CharField(max_length=50)
     image= models.FileField(upload_to='images', default='images\default.png')
+
+
+
+class Textbooks(models.Model):
+    addedby = models.ForeignKey(User, on_delete=models.CASCADE)
+    classe = models.IntegerField()
+    bookname = models.CharField(max_length=100)
+    book = models.FileField(upload_to='pdf')
+    
