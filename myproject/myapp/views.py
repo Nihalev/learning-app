@@ -1,4 +1,3 @@
-
 import os
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth import authenticate, login,logout
@@ -15,7 +14,7 @@ def home(req):
         P=PersonalDetails.objects.get(user_id=req.user)
         return render(req,'home.html',{'ps':P})
       except:
-        return render(req,'home.html')
+        return render(req,'home.html',{'r':range(1,13)})
 
 def signup(req):
     if req.method=='POST':
@@ -88,20 +87,21 @@ def classes(req,value):
           return render(req, "classes.html",{'t':t})
 
 
-@login_required(login_url='/login')
-def addbook(req):
-    if req.method=='POST':
-        Textbooks(classe=req.POST['class'],addedby=req.user,bookname=req.POST['textname'],book=req.FILES['file']).save()
-    else:
-        P=PersonalDetails.objects.get(user_id=req.user)
-        return render(req,'addbooks.html',{'ps':P})
-    
-
-
 def all_classes(req):
        t=Textbooks.objects.all()
        try:
           P=PersonalDetails.objects.get(user_id=req.user)
-          return render(req,'all_classes.html',{'ps':P,'t':t})
+          return render(req,'all_classes.html',{'ps':P,'t':t,'r':range(1,13)})
        except:
-          return render(req, "all_classes.html",{'t':t})
+          return render(req, "all_classes.html",{'t':t,'r':range(1,13)})
+       
+
+@login_required(login_url='/login')
+def addbook(req):
+    if req.method=='POST':
+        Textbooks(classe=req.POST['class'],addedby=req.user,bookname=req.POST['textname'],book=req.FILES['file']).save()
+        return redirect(home)
+    else:
+        P=PersonalDetails.objects.get(user_id=req.user)
+        return render(req,'addbooks.html',{'ps':P,'r':range(1,13)})
+    

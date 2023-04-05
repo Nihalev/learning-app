@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: x-large; ">Learning app</a>
+          <a class="navbar-brand" href="" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: x-large; "><img src="{% static 'icons.ico' %}" width="30" height="30">  Learning app</a>
           <div class="navbar-header" style="display: flex; order: -1;">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,11 +28,7 @@
               <li class="nav-item">
                 <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/">Home</a>
               </li>
-              {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link {% if request.path == '/logout' %}active{% endif %}" href="/logout">logout</a>
-              </li>
-              {% else %}
+              {% if not user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link {% if request.path == '/login' %}active{% endif %}" href="/login">login</a>
               </li>
@@ -47,7 +43,9 @@
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/all_classes">all Classes</a></li>
                   <li><hr class="dropdown-divider"></li>
+                  {% for i in r %}
                   <li><a class="dropdown-item" href="/class/1">Class 1</a></li>
+                  {% endfor %}
                   <li><a class="dropdown-item" href="/class/2">Class 2</a></li>
                   <li><a class="dropdown-item" href="/class/3">Class 3</a></li>
                   <li><a class="dropdown-item" href="/class/4">Class 4</a></li> 
@@ -67,9 +65,16 @@
               </li>
             </ul>
             {% if user.is_authenticated %}
-            <a href="/userdetails">
-              <img id="userlogo" src="{{ ps.image.url }}">
-            </a>
+            <div class="dropdown">
+              <i class=" dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="color:rgb(49, 49, 49);">
+                <img id="userlogo" src="{{ ps.image.url }}">
+              </i>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="/userdetails">My Profile</a></li>
+                <li><a class="dropdown-item" href="#">About</a></li>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              </ul>
+            </div>
             {% endif %}
           </div>
         </div>
@@ -79,7 +84,7 @@
 
       {% block con %}
       <main>
-        <div class="intro">
+        <div class="top">
           <h1>Digital Learning Platform</h1>
           <p>educational content and resources from anywhere and at any time</p>
           
@@ -89,7 +94,7 @@
           <button onclick="location.href='/login'">sign in</button>
           {% endif %}
         </div>
-        <div class="achievements">
+        <div class="works">
           <div class="work">
             <i class="fa-solid fa-binoculars"></i>
             <p class="work-heading">Accessible</p>
@@ -106,8 +111,8 @@
             <p class="work-text">Many learning platforms offer personalized learning paths based on the learner's individual needs and progress. This can help learners stay engaged and motivated throughout the course.</p>
           </div>
         </div>
-        <div class="about-me">
-          <div class="about-me-text">
+        <div class="mtv">
+          <div class="mtv-text">
             <h2>‟Try to find ways to make it enjoyable and engaging for yourself„</h2>
             <p>"Our learning app program is designed to help young learners develop core skills and concepts through interactive and personalized learning. Our platform offers a variety of topics that can be explored through engaging, interactive-based lessons.By using our program, students can learn at their own pace and receive personalized feedback to help them master the content."</p>
           </div>
@@ -122,15 +127,15 @@
         <div class="bottom-links">
           <div class="links">
             <span>More Info</span>
-            <a href="/#">Home</a>
+            <a href="/">Home</a>
             <a href="/#">About</a>
-            <a href="/#">Contact</a>
+            <a href="https://mail.google.com/mail/u/0/?tf=cm&to=nihalev111@gmail.com">Contact</a>
           </div>
           <div class="links">
             <span>Social Links</span>
-            <a href="/#"><i class="fab fa-facebook"></i></a>
-            <a href="/#"><i class="fab fa-twitter"></i></a>
-            <a href="/#"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/nihalev.ev"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/MOHAMMEDNIHALEV"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/_nihal_ev_"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
       </footer>
