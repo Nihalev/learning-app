@@ -125,6 +125,11 @@ MEDIA_URL = '/media/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://learning-app-production.up.railway.app'
+]
+
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'myapp\static')]
 STATIC_ROOT =os.path.join(BASE_DIR, 'staticfiles')
 
