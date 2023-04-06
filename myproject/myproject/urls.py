@@ -32,5 +32,4 @@ urlpatterns = [
     path('userdetails',views.userdetails),
     path('addbook',views.addbook),
     path('all_classes',views.all_classes),
-]
-# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
