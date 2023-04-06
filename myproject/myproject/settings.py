@@ -132,7 +132,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://learning-app-production.up.railway.app'
+    'https://learning-app.up.railway.app'
 ]
 
 
