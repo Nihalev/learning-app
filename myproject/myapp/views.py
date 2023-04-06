@@ -4,27 +4,29 @@ from django.contrib.auth.models import User
 from myapp.models import PersonalDetails,Textbooks
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
 # Create your views here.
 def home(req):
-      try:
-        P=PersonalDetails.objects.get(user_id=req.user)
-        return render(req,'home.html',{'ps':P})
-      except:
-        return render(req,'home.html',{'r':range(1,13)})
+        p='null'
+        if req.user.is_authenticated:
+            p=PersonalDetails.objects.get(user_id=req.user)
+        return render(req,'home.html',{'ps':p,'r':range(1,13)})
 
 def signup(req):
     if req.method=='POST':
          username=req.POST['uname']
          password=req.POST['psw1']
          psw2=req.POST['psw2']
-         if password==psw2:
-             u = User.objects.create_user(username=username,password=password)
-             PersonalDetails.objects.create(user_id=u.id)
-             return redirect(signin)
-         else:
-             messages.info(req,'password mismatch')
+         if User.objects.filter(username=username):
+             messages.info(req,'username already exists')
              return render(req,'signup.html')
+         else:
+            if password==psw2:
+                u = User.objects.create_user(username=username,password=password)
+                PersonalDetails.objects.create(user_id=u.id)
+                return redirect(signin)
+            else:
+                messages.info(req,'password mismatch')
+                return render(req,'signup.html')
     else:
         return render(req,'signup.html')
          
@@ -39,7 +41,6 @@ def signin(req):
            if req.POST['next']:
                return redirect(req.POST['next'])
            else:
-               messages.success(req,'')
                return redirect(home)
          else:
              messages.info(req,'incorrect password or username')
@@ -80,20 +81,19 @@ def userdetails(req):
 
 def classes(req,value):
        t=Textbooks.objects.filter(classe=value)
-       try:
-          P=PersonalDetails.objects.get(user_id=req.user)
-          return render(req,'classes.html',{'ps':P,'t':t})
-       except:
-          return render(req, "classes.html",{'t':t})
+       p='null'
+       if req.user.is_authenticated:
+            p=PersonalDetails.objects.get(user_id=req.user)
+       return render(req,'classes.html',{'ps':p,'t':t})
+       
 
 
 def all_classes(req):
        t=Textbooks.objects.all()
-       try:
+       P='null'
+       if req.user.is_authenticated:
           P=PersonalDetails.objects.get(user_id=req.user)
-          return render(req,'all_classes.html',{'ps':P,'t':t,'r':range(1,13)})
-       except:
-          return render(req, "all_classes.html",{'t':t,'r':range(1,13)})
+       return render(req,'all_classes.html',{'ps':P,'t':t,'r':range(1,13)})
        
 
 @login_required(login_url='/login')
