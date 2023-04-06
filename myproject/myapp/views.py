@@ -1,12 +1,9 @@
-import os
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.models import User
 from myapp.models import PersonalDetails,Textbooks
-from myapp.forms import TextbookForm
 from django.contrib.auth.decorators import login_required
-from django.http import FileResponse
-from django.conf import settings
+from django.contrib import messages
 
 # Create your views here.
 def home(req):
@@ -25,6 +22,9 @@ def signup(req):
              u = User.objects.create_user(username=username,password=password)
              PersonalDetails.objects.create(user_id=u.id)
              return redirect(signin)
+         else:
+             messages.info(req,'password mismatch')
+             return render(req,'signup.html')
     else:
         return render(req,'signup.html')
          
@@ -39,10 +39,11 @@ def signin(req):
            if req.POST['next']:
                return redirect(req.POST['next'])
            else:
+               messages.success(req,'')
                return redirect(home)
          else:
-             return HttpResponse("ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo")
-                 
+             messages.info(req,'incorrect password or username')
+             return render(req,'login.html')
     else:
         return render(req,'login.html')
 
@@ -71,7 +72,6 @@ def userdetails(req):
           u.save()
       except:
           pass 
-    
       return render(req,'userdetails.html',{'ps':u})
     else:
          P=PersonalDetails.objects.get(user_id=req.user)

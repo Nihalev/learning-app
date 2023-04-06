@@ -2,25 +2,36 @@
 {% load static %}
 
     
-    {% block con %}
+{% block con %}
+
     <div style="background: url('/static/AdobeStock_280081854_Preview.jpg'); background-position: center; background-size: cover;">
-    <div class="container-fluid" style="padding-top: 80px; padding-bottom: 218px; width: 70rem;">
-    <div class="card" style="width: 25rem; height: 25rem; background-color: rgba(129, 186, 130, 0); backdrop-filter: blur(3px);">
-    <div class="card-body">
-        <h1 style="text-align: center; margin-bottom: 40px; opacity: 0.6; color: rgb(255, 255, 255);">Login</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label class="form-label" style="opacity: 0.6; color: rgb(255, 255, 255);">username</label>
-        <input class="form-control" style="margin-bottom: 40px;" type="text" name="uname" required>
-        <label class="form-label" style="opacity: 0.6; color: rgb(255, 255, 255);">password</label>
-        <input class="form-control" type="password" name="psw" required>
-        <input type="hidden" name="next" value="{{ request.GET.next }}">
-        <div style="text-align: center;">
-        <input class="btn btn-danger" style="margin-top: 40px;" type="submit">
+
+    <br>
+    {% for m in messages %}
+      <div class="alert alert-danger alert-dismissible fade show">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+         <strong>{{ m }}</strong>
+         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>   
+    {% endfor %}
+    
+        <div class="container-fluid" style="padding-top: 80px; padding-bottom: 218px; width: 70rem;">
+        <div class="card" style="width: 25rem; height: 25rem; background-color: rgba(129, 186, 130, 0); backdrop-filter: blur(3px);">
+        <div class="card-body">
+            <h1 style="text-align: center; margin-bottom: 40px; opacity: 0.6; color: rgb(255, 255, 255);">Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label class="form-label" style="opacity: 0.6; color: rgb(255, 255, 255);">username</label>
+            <input class="form-control" style="margin-bottom: 40px;" type="text" name="uname" required>
+            <label class="form-label" style="opacity: 0.6; color: rgb(255, 255, 255);">password</label>
+            <input class="form-control" type="password" name="psw" required>
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+            <div style="text-align: center;">
+            <input class="btn btn-danger" style="margin-top: 40px;" type="submit">
+            </div>
+        </form>
         </div>
-    </form>
+        </div>
+        </div>
     </div>
-    </div>
-    </div>
-</div>
-    {% endblock con %}
+{% endblock con %}
