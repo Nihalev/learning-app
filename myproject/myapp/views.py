@@ -23,6 +23,7 @@ def signup(req):
             if password==psw2:
                 u = User.objects.create_user(username=username,password=password)
                 PersonalDetails.objects.create(user_id=u.id)
+                messages.success(req,'register successfully')
                 return redirect(signin)
             else:
                 messages.info(req,'password mismatch')
@@ -43,7 +44,7 @@ def signin(req):
            else:
                return redirect(home)
          else:
-             messages.info(req,'incorrect password or username')
+             messages.warning(req,'incorrect password or username')
              return render(req,'login.html')
     else:
         return render(req,'login.html')
@@ -87,7 +88,6 @@ def classes(req,value):
        return render(req,'classes.html',{'ps':p,'t':t})
        
 
-
 def all_classes(req):
        t=Textbooks.objects.all()
        P='null'
@@ -98,10 +98,11 @@ def all_classes(req):
 
 @login_required(login_url='/login')
 def addbook(req):
+    P=PersonalDetails.objects.get(user_id=req.user)
     if req.method=='POST':
         Textbooks(classe=req.POST['class'],addedby=req.user,bookname=req.POST['textname'],book=req.FILES['file']).save()
-        return redirect(home)
+        messages.info(req,'book added successfully')
+        return render(req,'addbooks.html',{'ps':P,'r':range(1,13)})
     else:
-        P=PersonalDetails.objects.get(user_id=req.user)
         return render(req,'addbooks.html',{'ps':P,'r':range(1,13)})
     
