@@ -40,8 +40,10 @@ def signin(req):
          if user:
            login(req,user)
            if req.POST['next']:
+               messages.success(req,'logged in successfully')
                return redirect(req.POST['next'])
            else:
+               messages.success(req,'logged in successfully')
                return redirect(home)
          else:
              messages.warning(req,'incorrect password or username')
@@ -52,6 +54,7 @@ def signin(req):
 
 def signout(req):
     logout(req)
+    messages.success(req,'logged out successfully')
     return redirect(home)
 
 
@@ -73,7 +76,8 @@ def userdetails(req):
           u.image=req.FILES['file']
           u.save()
       except:
-          pass 
+          pass
+      messages.success(req,'Updated successfully') 
       return render(req,'userdetails.html',{'ps':u})
     else:
          P=PersonalDetails.objects.get(user_id=req.user)

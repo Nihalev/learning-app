@@ -3,11 +3,10 @@
 
     
 {% block con %}
-
     <div style="background: url('/static/AdobeStock_280081854_Preview.jpg'); background-position: center; background-size: cover;">
 
-    <br>
     {% for m in messages %}
+    <br>
       <div class="alert alert-{{ m.tags }} alert-dismissible fade show">
         {% if m.tags == warning %}
           <i class="fa-solid fa-triangle-exclamation"></i>

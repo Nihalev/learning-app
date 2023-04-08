@@ -70,6 +70,7 @@
               <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="/userdetails">My Profile</a></li>
                 <li><a class="dropdown-item" href="#">About</a></li>
+                <hr>
                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
               </ul>
             </div>
@@ -83,6 +84,16 @@
       {% block con %}
       <main>
         <div class="top">
+          
+          {% for m in messages %}
+          <br>
+            <div class="alert alert-success alert-dismissible fade show">
+              <i class="fa-solid fa-circle-check"></i>
+               <strong>{{ m }}&nbsp;&nbsp;</strong>
+               <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>   
+          {% endfor %}
+
           <h1>Digital Learning Platform</h1>
           <p>educational content and resources from anywhere and at any time</p>
           

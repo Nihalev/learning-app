@@ -5,6 +5,15 @@
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   
+  {% for m in messages %}
+  <br>
+    <div class="alert alert-success alert-dismissible fade show">
+      <i class="fa-solid fa-circle-check"></i>
+       <strong>{{ m }}</strong>
+       <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>   
+  {% endfor %}
+
 <div class="container" style="padding-top: 80px; padding-bottom: 120px;">
 <div class="row">
   <div class="col-md">
@@ -15,7 +24,7 @@
             <div id="mm">
               <img  id="img" src="{{ ps.image.url }}">
              <label id="label" for="file">
-               <span id="lablename">Change Image</span>
+               <span id="lablename">Select Image</span>
              </label>
 
              <input  id="file" type="file"  name="file">
@@ -24,7 +33,7 @@
        <h5 class="card-title">{{ user.username }}</h5>
       </div>
       <div class="card-footer">
-        <input type="submit" class="btn btn-primary" value="upload">
+        <input type="submit" class="btn btn-primary" value="upload Image">
       </div>
     </div>
   </div>
