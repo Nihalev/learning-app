@@ -1,10 +1,10 @@
 {% extends "home.html" %}
 {% block con %}
-<div class="container-fluid" style="padding-top: 80px; padding-bottom: 120px; background-image: url('/static/rrrrrr.jpg'); background-position: center;background-size: cover;">
+<div class="container-fluid" style="padding-top: 80px; padding-bottom: 120px; background-image: url('/static/signup.jpg'); background-position: center;background-size: cover;">
 
   {% for m in messages %}
   <br>
-    <div class="alert alert-danger alert-dismissible fade show">
+    <div id='message' class="alert alert-danger alert-dismissible fade show">
       <i class="fa-solid fa-skull-crossbones"></i>
        <strong>{{ m }}</strong>
        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>

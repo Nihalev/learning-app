@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block con %}
-<form method="POST" enctype="multipart/form-data">
+<form id="form" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   
   {% for m in messages %}
   <br>
-    <div class="alert alert-success alert-dismissible fade show">
+    <div id='message' class="alert alert-success alert-dismissible fade show">
       <i class="fa-solid fa-circle-check"></i>
        <strong>{{ m }}</strong>
        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -24,16 +24,14 @@
             <div id="mm">
               <img  id="img" src="{{ ps.image.url }}">
              <label id="label" for="file">
-               <span id="lablename">Select Image</span>
+               <span id="lablename">Change Image</span>
              </label>
 
              <input  id="file" type="file"  name="file">
             </div>
-
-       <h5 class="card-title">{{ user.username }}</h5>
       </div>
       <div class="card-footer">
-        <input type="submit" class="btn btn-primary" value="upload Image">
+        <h5>{{ user.username }}</h5>
       </div>
     </div>
   </div>
@@ -44,7 +42,7 @@
         <div class="row">
           <div class="col">
             <div>
-              <label class="form-label">username*</label>
+              <label  class="form-label">username*</label>
               <input type="text" value="{{ user.username }}" class="form-control" name="uname" required>
             </div>
           </div>

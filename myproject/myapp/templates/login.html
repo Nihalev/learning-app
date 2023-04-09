@@ -3,11 +3,11 @@
 
     
 {% block con %}
-    <div style="background: url('/static/AdobeStock_280081854_Preview.jpg'); background-position: center; background-size: cover;">
+    <div style="background: url('/static/login.jpg'); background-position: center; background-size: cover;">
 
     {% for m in messages %}
     <br>
-      <div class="alert alert-{{ m.tags }} alert-dismissible fade show">
+      <div id='message' class="alert alert-{{ m.tags }} alert-dismissible fade show">
         {% if m.tags == warning %}
           <i class="fa-solid fa-triangle-exclamation"></i>
         {% else %}
